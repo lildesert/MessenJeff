@@ -2,14 +2,13 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>Plop</title>
-		<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>	
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+		<script src="./ressource/js/jquery-2.1.3.min.js"></script>	
+		<link rel="stylesheet" href="./ressource/css/bootstrap.min.css">
+		<link rel="stylesheet" href="./ressource/css/bootstrap-theme.min.css">
+		<script src="./ressource/js/bootstrap.min.js"></script>
 		<script src="./application.js"></script>
 	</head>
 	
-
 	<body>
 		<div id="main" style="margin:auto; width: 400px;">
 			<div id="accueil" class="well">
