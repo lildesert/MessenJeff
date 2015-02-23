@@ -6,7 +6,7 @@
 		<link rel="stylesheet" href="./ressource/css/bootstrap.min.css">
 		<link rel="stylesheet" href="./ressource/css/bootstrap-theme.min.css">
 		<script src="./ressource/js/bootstrap.min.js"></script>
-		<script src="./application.js"></script>
+		<script src="./ressource/js/application.js"></script>
 	</head>
 	
 	<body>
