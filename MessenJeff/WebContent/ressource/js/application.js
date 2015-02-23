@@ -1,5 +1,5 @@
 //var wsUri = 'ws://echo.websocket.org/';
-var wsUri = 'ws://localhost:8080/MessenJeff/chat/1';
+var wsUri = 'ws://localhost:8080/MessenJeff/chat/';
 var output;
 var image = "https://avatars1.githubusercontent.com/u/5688850?v=3&s=460";
 var name = "jeff";
