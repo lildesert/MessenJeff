@@ -29,6 +29,7 @@ $( document ).ready(function() {
     $(".panel-heading").click(function(e) {
         $(this).parent().children(".panel-body").toggle();
         $(this).parent().children(".panel-footer").toggle();
+        $(this).parent().children(".profile-footer").toggle();
     });
 });
 
@@ -106,6 +107,7 @@ function doSend(message) {
         $( "#box" ).append(sHtml);
     }
     $("#box").animate({ scrollTop: $("#box")[0].scrollHeight }, "fast");
+    $(".profile-footer img").remove();
     dateLastMessage = now;
     typeLastMessage = 'sent';
     websocket.send(message);

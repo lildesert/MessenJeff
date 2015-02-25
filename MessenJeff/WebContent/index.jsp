@@ -51,6 +51,7 @@
                         </div>
                         <div class="profile-footer">
                             <img class="img-responsive img-profile-footer" src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg">
+                            <img class="img-responsive img-load" src="./ressource/img/load.gif">
                             <img class="img-responsive img-profile-footer" src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg">
                             <img class="img-responsive img-load" src="./ressource/img/load.gif">
                         </div>
