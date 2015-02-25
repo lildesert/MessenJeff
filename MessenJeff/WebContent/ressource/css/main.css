@@ -1,11 +1,45 @@
-..panel-default > .panel-heading{
-	background: #404040;
+.img-load {
+    width: 10px;
+    padding-top: 6px;
+    height: 10px;    
+    opacity: 0.5;
+    transition: all 0.518s ease 0s, width 0.3s ease 0s;
 }
-
+.profile-footer {
+    background: none repeat scroll 0% 0% #E5E5E5;
+    height: 24px;
+}
+.img-profile-footer{
+    float: left;
+    height: 24px;
+    width: 24px;
+    padding-left: 2px;
+    padding-top: 2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
+    opacity: 0.5;
+    transition: all 0.518s ease 0s, width 0.3s ease 0s;
+}
+.panel-default > .panel-heading{
+    background: #404040;
+}
+.panel-footer {
+    padding: 5px 7px;
+}
+.img-profile {
+    max-width: 32px;
+}
+.input-message {
+    width: 100%;
+}
+.chat-window{
+    width: 350px;
+}
 body{
     height:400px;
     position: fixed;
     bottom: 0;
+    background: url("../img/bg_light.png")
 }
 .col-md-2, .col-md-10{
     padding:0;
@@ -17,7 +51,7 @@ body{
     bottom:0;
     position:fixed;
     float:right;
-    margin-left:10px;
+    margin-right:10px;
 }
 .chat-window > div > .panel{
     border-radius: 5px 5px 0 0;
@@ -25,11 +59,11 @@ body{
 .icon_minim{
     padding:2px 10px;
 }
-.msg_container_base{
+.msg_container_base {
   background: #e5e5e5;
   margin: 0;
-  padding: 0 10px 10px;
-  max-height:300px;
+  padding: 0 10px 0px;
+  max-height:400px;
   overflow-x:hidden;
 }
 .top-bar {
@@ -53,6 +87,7 @@ body{
   border-radius: 2px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   max-width:100%;
+  width: 100%;
 }
 .messages > p {
     font-size: 13px;
@@ -73,6 +108,10 @@ img {
 }
 .avatar {
     position: relative;
+    width: 32px;
+}
+.message-content {
+    width: 100%;
 }
 .base_receive > .avatar:after {
     content: "";
