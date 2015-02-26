@@ -1,18 +1,17 @@
 <html>
     <head>
-        <meta charset="utf-8" />
-        <title>Plop</title>
-        <script src="./ressource/js/jquery-2.1.3.min.js"></script>	
+        <meta charset="utf-8"/>
+        <title>MessenJeff</title>
         <link rel="stylesheet" href="./ressource/css/bootstrap.min.css">
         <link rel="stylesheet" href="./ressource/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="./ressource/css/main.css">
+        <script src="./ressource/js/jquery-2.1.3.min.js"></script>
         <script src="./ressource/js/bootstrap.min.js"></script>
         <script src="./ressource/js/application.js"></script>
     </head>
-
     <body>
         <div class="container">
-            <div class="row chat-window col-xs-5 col-md-3" id="chat_window_1" style="margin-left:10px;">
+            <div id="room_1" class="row chat-window col-xs-5 col-md-3" style="margin-left:10px;">
                 <div class="col-xs-12 col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-heading top-bar">
@@ -50,10 +49,14 @@
                             </div>
                         </div>
                         <div class="profile-footer">
-                            <img class="img-responsive img-profile-footer" src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg">
-                            <img class="img-responsive img-load" src="./ressource/img/load.gif">
-                            <img class="img-responsive img-profile-footer" src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg">
-                            <img class="img-responsive img-load" src="./ressource/img/load.gif">
+                            <div id="user_footer_1">
+                                <img class="img-responsive img-profile-footer" src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg">
+                                <img class="img-responsive img-load" src="./ressource/img/load.gif">
+                            </div>
+                            <div id="user_footer_2">
+                                <img class="img-responsive img-profile-footer" src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg">
+                                <img class="img-responsive img-load" src="./ressource/img/load.gif">
+                            </div>
                         </div>
                         <div class="panel-footer">
                             <div class="input-group input-message">
@@ -63,6 +66,6 @@
                     </div>
                 </div>
             </div>
-
+        </div>
     </body>
 </html>
