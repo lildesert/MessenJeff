@@ -38,8 +38,6 @@
 }
 body{
     height:400px;
-    position: fixed;
-    bottom: 0;
     background: url("../img/bg_light.png")
 }
 .col-md-2, .col-md-10{
@@ -64,7 +62,7 @@ body{
   background: #e5e5e5;
   margin: 0;
   padding: 0 10px 0px;
-  max-height:400px;
+  max-height:300px;
   overflow-x:hidden;
 }
 .top-bar {
@@ -93,7 +91,7 @@ body{
 .messages > p {
     font-size: 13px;
     margin: 0 0 0.2rem 0;
-  }
+}
 .messages > time {
     font-size: 11px;
     color: #ccc;
@@ -126,8 +124,8 @@ img {
     border-bottom-color: rgba(0, 0, 0, 0);
 }
 .base_sent {
-  justify-content: flex-end;
-  align-items: flex-end;
+    justify-content: flex-end;
+    align-items: flex-end;
 }
 .base_sent > .avatar:after {
     content: "";

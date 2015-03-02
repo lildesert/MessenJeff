@@ -1,4 +1,4 @@
-var wsUri = 'ws://localhost:8080/MessenJeff';
+var wsUri = 'ws://0.0.0.0:8080/MessenJeff/chat/java';
 var output;
 var image = "https://avatars1.githubusercontent.com/u/5688850?v=3&s=460";
 var name = "Jeff";
