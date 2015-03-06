@@ -1,4 +1,4 @@
-var wsUri = 'ws://' +  window.location.hostname + ':8080/room';
+var wsUri = 'ws://' + document.location.host + document.location.pathname + 'MessenJeff/';
 var output;
 var image = "https://avatars1.githubusercontent.com/u/5688850?v=3&s=460";
 var name = "Jeff";
