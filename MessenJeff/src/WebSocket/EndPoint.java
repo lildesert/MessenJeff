@@ -30,7 +30,8 @@ public class EndPoint {
     @OnOpen
     public void open(final Session session, @PathParam("room") final String room) {
         log.info("Ouverture de la session, room: " + room);
-        System.out.println("ta maman");
+        System.out.println("test");
+        
         Connexion c = new Connexion();
         c.setNickname("Ju");
         c.setSalle(room);
