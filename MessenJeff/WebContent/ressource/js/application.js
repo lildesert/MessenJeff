@@ -1,7 +1,8 @@
-var wsUri = 'ws://' + document.location.host + document.location.pathname + 'MessenJeff/';
+var wsUri = 'ws://' + document.location.host + document.location.pathname + 'chat/';
 var output;
-var image = "https://avatars1.githubusercontent.com/u/5688850?v=3&s=460";
-var name = "Jeff";
+var image = 'https://avatars1.githubusercontent.com/u/5688850?v=3&s=460';
+var name = '';
+var room = ''
 var sDate = "2014-02-05 19:19";
 var mousePosition = 'out';
 var dateLastMessage = new Date(0);
@@ -9,10 +10,16 @@ var idLastSentMessage = 0;
 var idLastReceivedMessage = 0;
 var typeLastMessage = 'received';
 var users = [];
+var websocket;
 
 $( document ).ready(function() {
     
-    initWebSocket();
+    $("#username").focus();
+    
+    $("#enterRoom").click(function(e) {
+        name =  $("#username").val().trim();
+        initWebSocket();
+    });
     
     // Detect when the user is in the input box
     $("#btn-input").focus(function() {
@@ -39,7 +46,9 @@ $( document ).ready(function() {
 //*******************************************
 
 function initWebSocket() {
-    websocket = new WebSocket(wsUri);
+    room = $('#salle').val().trim();
+    name = $('#username').val().trim();
+    websocket = new WebSocket(wsUri + room);
     websocket.onopen = function(evt) { onOpen(evt); };
     websocket.onclose = function(evt) { onClose(evt); };
     websocket.onmessage = function(evt) { onMessage(evt); };
@@ -47,30 +56,22 @@ function initWebSocket() {
 }
 
 function onOpen(evt) {
-  //writeToScreen("CONNECTED");
-  doSend('{"sender":"jeff", "message":"hello !", "dtReception":"2009-11-13T20:00", "imgUrl":"https://avatars1.githubusercontent.com/u/5688850?v=3&s=460"}');
+    console.log('Connected. User:' + name + '/Salle:' + salle);
 }
 
 function onClose(evt) {
-    //alert("DECO !");
+    console.log('Deco!');
 }
 
 function onMessage(evt) {
+    console.log('Message!');
+    console.log(evt.data);
     var input = jQuery.parseJSON( evt.data );
-    if(input.type == 'message') {
-        receiveMessage(input.user[0]);
-    } else if (input.type == 'reader') {
-        
-    } else if (input.type == 'writing') {
-        
-    } else if (input.type == 'stopwriting') {
-        
-    }
+    receiveMessage(input);
 }
 
 function onError(evt) {
-    //writeToScreen('<span style="color: red;">ERROR:</span> ' + evt.data);
-    //alert("ERROR : " + evt.data);
+    console.log(evt);
 }
 
 //*******************************************
@@ -85,16 +86,17 @@ function takeNewMessage(){
     }
 }
 
-function receiveMessage(userM){
-    var sHtml = '<div class="col-md-10 col-xs-10 message-content"><div class="messages msg_sent">';
-    sHtml += userM.image;
-    sHtml += '"></div><div class="col-md-10 col-xs-10"><div class="messages msg_receive"><p>';
-    sHtml += userM.message;
-    sHtml += '</p><time datetime="';
-    sHtml += userM.date;
-    sHtml += '>' + userM.name + ' * 51 min</time></div></div>';
-    
-    $( "#box" ).append(sHtml);
+function receiveMessage(m){
+    if(m.name != name) {
+        var sHtml = '<div class="row msg_container base_receive"><div class="col-md-2 col-xs-2 avatar">';
+        sHtml += '<img class="img-responsive img-profile" src="' + image + '"></div>';
+        sHtml += '<div class="col-md-10 col-xs-10 message-content"><div class="messages msg_receive"><p>';
+        sHtml += m.message + '</p><time datetime="2009-11-13T20:00">' + m.sender + '* 19h12</time>';
+        sHtml += '</div></div></div>';
+        
+        $( "#box" ).append(sHtml);
+        $("#box").scrollTop($("#box")[0].scrollHeight);
+    }
 }
 
 function doSend(message) {
@@ -110,9 +112,7 @@ function doSend(message) {
         idLastSentMessage++;
         
         sHtml = '<div id="sent_' + idLastSentMessage + '" class="row msg_container base_sent"><div class="col-md-10 col-xs-10 message-content"><div class="messages msg_sent"><p>';
-        sHtml += message;
-        sHtml += '</p><time datetime="';
-        sHtml += sDate;
+        sHtml += message + '</p><time datetime="' + sDate;
         sHtml += '">' + name + ' * ' + dateLastMessage.getHours() + ':' + dateLastMessage.getMinutes() + ' </time>';
         sHtml += '</div></div><div class="col-md-2 col-xs-2 avatar"><img class="img-responsive img-profile" src="' + image;
         sHtml += '"></div>';
@@ -123,7 +123,9 @@ function doSend(message) {
     $("#box").scrollTop($("#box")[0].scrollHeight);
     dateLastMessage = now;
     typeLastMessage = 'sent';
-    websocket.send(message);
+    var msg = '{"message":"' + message + '", "sender":"'+ name +'", "received":""}';    
+    websocket.send(msg);
+    console.log('Sent : ' + msg);
 }
 
 function addUser(id, name, isWriting, image){

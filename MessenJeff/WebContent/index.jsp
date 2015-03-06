@@ -19,19 +19,19 @@
                     <ul class="fields-list">
                         <li>
                             <i class="icon-envelope-alt" style="float: left;"></i>
-                            <input autocomplete="off" id="email" name="name" placeholder="name" type="text">
+                            <input autocomplete="off" id="username" name="name" placeholder="name" type="text">
                         </li>
                         <li>
                             <i class="icon-user" style="float: left;"></i>
-                            <input autocomplete="off" id="first-name" name="image" placeholder="image" type="text">
+                            <input autocomplete="off" id="userimage" name="image" placeholder="image" type="text">
                         </li>
                         <li>
                             <i class="icon-user" style="float: left;"></i>
-                            <input autocomplete="off" id="last-name" name="salle" placeholder="salle" type="text">
+                            <input autocomplete="off" id="salle" name="salle" placeholder="salle" type="text">
                         </li>
                     </ul>
                     <div class="actions clearfix">
-                        <a href="#" class="btn btn-large medium-blue login-btn">
+                        <a id="enterRoom" href="javascript:void(0);" class="btn btn-large medium-blue login-btn">
                             Enter
                         </a>
                     </div>
