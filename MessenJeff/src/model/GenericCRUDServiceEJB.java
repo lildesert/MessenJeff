@@ -13,7 +13,7 @@ import javax.persistence.Query;
 
 @Stateless
 public class GenericCRUDServiceEJB<T> implements GenericCRUDService<T>{
-  @PersistenceContext(unitName="BookStore")
+  @PersistenceContext(unitName="MessenJeff")
   EntityManager em;
   private Class<T> entityClass;
   

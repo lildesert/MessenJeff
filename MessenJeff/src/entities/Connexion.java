@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -23,6 +24,7 @@ public class Connexion {
 	@NotNull
 	private String salle;
 	
+	@ElementCollection
 	@Temporal(javax.persistence.TemporalType.DATE)
 	private List<Date> connectionDates;
 	

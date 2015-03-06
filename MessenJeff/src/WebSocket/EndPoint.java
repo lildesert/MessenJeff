@@ -30,7 +30,7 @@ public class EndPoint {
     @OnOpen
     public void open(final Session session, @PathParam("room") final String room) {
         log.info("Ouverture de la session, room: " + room);
-        
+        System.out.println("ta maman");
         Connexion c = new Connexion();
         c.setNickname("Ju");
         c.setSalle(room);
@@ -42,6 +42,7 @@ public class EndPoint {
 
     @OnMessage
     public void onMessage(final Session session, final Message chatMessage) {
+    	log.info("reception message");
         String room = (String) session.getUserProperties().get("room");
         try {
             for (Session s : session.getOpenSessions()) {
