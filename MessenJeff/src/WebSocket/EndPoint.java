@@ -13,7 +13,7 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@ServerEndpoint(value = "/MessenJeff/{room}", encoders = MessageEncoder.class, decoders = MessageDecoder.class)
+@ServerEndpoint(value = "/chat/{room}", encoders = MessageEncoder.class, decoders = MessageDecoder.class)
 public class EndPoint {
 
     private final Logger log = LogManager.getLogger(getClass().getName());
