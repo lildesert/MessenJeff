@@ -1,4 +1,4 @@
-var wsUri = 'ws://' + document.location.host + document.location.pathname + 'MessenJeff/';
+var wsUri = 'ws://' + document.location.host + document.location.pathname + 'chat/1';
 var output;
 var image = "https://avatars1.githubusercontent.com/u/5688850?v=3&s=460";
 var name = "Jeff";
@@ -39,6 +39,7 @@ $( document ).ready(function() {
 //*******************************************
 
 function initWebSocket() {
+	console.log(wsUri);
     websocket = new WebSocket(wsUri);
     websocket.onopen = function(evt) { onOpen(evt); };
     websocket.onclose = function(evt) { onClose(evt); };
