@@ -1,0 +1,149 @@
+.btn.medium-blue, .btn-group.open .btn.medium-blue {
+    border: 1px solid #5997B8;
+    background: -moz-linear-gradient(center top , #84B2CA, #67A0BE) repeat scroll 0% 0% / 100% auto #67A0BE;
+    text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
+    color: #FFF;
+}
+.login-container .login-form .actions {
+    padding: 10px 0px;
+    line-height: 30px;
+    width: 100%;
+}
+.login-container {
+    margin: auto;
+    top: 0px;
+    width: 330px;
+}
+.center {
+    text-align: center;
+}
+.login-container .title {
+    padding-bottom: 10px;
+    font-weight: 600;
+    font-size: 3em;
+    text-align: right;
+}
+.text-transparent {
+    color: rgba(0, 0, 0, 0.2);
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.6), 0px 0px 1px rgba(0, 0, 0, 0.3);
+}
+hr.main {
+    margin: 0px;
+    border-right: 0px none;
+    border-left: 0px none;
+    -moz-border-top-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    border-image: none;
+    border-width: 1px 0px;
+    border-style: solid none;
+    border-color: #DDD -moz-use-text-color #F5F5F5;
+}
+.login-container .login-form {
+    width: 100%;
+    margin-top: 20px;
+}
+form {
+    margin: 0px 0px 20px;
+}
+.login-container .login-form .fields-list {
+    list-style: outside none none;
+    margin: 0px;
+    padding: 0px;
+    border-radius: 4px;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2) inset, 0px 1px 0px rgba(255, 255, 255, 0.4);
+    background: none repeat scroll 0% 0% rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+.login-container .login-form .fields-list li:first-child {
+    border-top: 0px none;
+}
+.login-container .login-form .fields-list li {
+    position: relative;
+    padding: 4px 12px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 14px;
+    line-height: 18px;
+    text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
+}
+.login-container .login-form .fields-list li i {
+    position: absolute;
+    top: 11px;
+    color: #888;
+}
+li [class^="icon-"], li [class*=" icon-"] {
+    display: inline-block;
+    width: 1.25em;
+    text-align: center;
+}
+[class^="icon-"], [class*=" icon-"] {
+    padding-right: 0.3em;
+}
+[class^="icon-"], [class*=" icon-"] {
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: inherit;
+    display: inline;
+    width: auto;
+    height: auto;
+    line-height: normal;
+    vertical-align: baseline;
+    background-image: none !important;
+    background-position: 0px 0px;
+    background-repeat: repeat;
+}
+[class^="icon-"], [class*=" icon-"] {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    line-height: 14px;
+    vertical-align: text-top;
+    background-position: 14px 14px;
+    background-repeat: no-repeat;
+    margin-top: 1px;
+}
+.login-container .login-form .fields-list li input {
+    width: 100%;
+    margin: 0px;
+    padding-left: 25px;
+    border: medium none;
+    font-size: 12px;
+    background: none repeat scroll 0% 0% transparent;
+    box-shadow: none;
+}
+select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], input[type="file"], .uneditable-input {
+    height: 30px;
+    line-height: 20px;
+    font-size: 12px;
+}
+textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+    background-color: #FFF;
+    border: 1px solid #CCC;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+}
+select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+    display: inline-block;
+    height: 20px;
+    padding: 4px 6px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #555;
+    border-radius: 4px;
+    vertical-align: middle;
+}
+input, button, select, textarea {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+label, input, button, select, textarea {
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 20px;
+}
+.chat_input {
+    height: 30px;
+}
