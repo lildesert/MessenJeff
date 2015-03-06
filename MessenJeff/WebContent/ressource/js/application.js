@@ -1,4 +1,4 @@
-var wsUri = 'ws://0.0.0.0:8080/MessenJeff/chat/java';
+var wsUri = 'ws://' +  window.location.hostname + ':8080/room';
 var output;
 var image = "https://avatars1.githubusercontent.com/u/5688850?v=3&s=460";
 var name = "Jeff";
