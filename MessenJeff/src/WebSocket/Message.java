@@ -6,7 +6,15 @@ public class Message {
 
 	private String message;
 	private String sender;
+	private String urlImg;
 	private Date dtReception;
+	
+	public String getUrlImg() {
+		return urlImg;
+	}
+	public void setUrlImg(String urlImg) {
+		this.urlImg = urlImg;
+	}
 	
 	public String getSender() {
 		return sender;

@@ -24,6 +24,7 @@ public class MessageDecoder implements Decoder.Text<Message> {
 		JsonObject obj = Json.createReader(new StringReader(textMessage))
 				.readObject();
 		chatMessage.setMessage(obj.getString("message"));
+		chatMessage.setUrlImg(obj.getString("urlImg"));
 		chatMessage.setSender(obj.getString("sender"));
 		chatMessage.setDtReception(new Date());
 		return chatMessage;
