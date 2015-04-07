@@ -2,7 +2,7 @@ var wsUri = 'ws://' + document.location.host + document.location.pathname + 'cha
 var output;
 var image = 'https://avatars1.githubusercontent.com/u/5688850?v=3&s=460';
 var name = '';
-var room = ''
+var room = '';
 var sDate = "2014-02-05 19:19";
 var mousePosition = 'out';
 var dateLastMessage = new Date(0);
@@ -48,7 +48,7 @@ $( document ).ready(function() {
 function initWebSocket() {
     room = $('#salle').val().trim();
     name = $('#username').val().trim();
-    websocket = new WebSocket(wsUri + room);
+    websocket = new WebSocket(wsUri + room +'/'+name);
     websocket.onopen = function(evt) { onOpen(evt); };
     websocket.onclose = function(evt) { onClose(evt); };
     websocket.onmessage = function(evt) { onMessage(evt); };
@@ -87,7 +87,7 @@ function takeNewMessage(){
 }
 
 function receiveMessage(m){
-    if(m.name != name) {
+    if(m.sender != name) {
         var sHtml = '<div class="row msg_container base_receive"><div class="col-md-2 col-xs-2 avatar">';
         sHtml += '<img class="img-responsive img-profile" src="' + image + '"></div>';
         sHtml += '<div class="col-md-10 col-xs-10 message-content"><div class="messages msg_receive"><p>';

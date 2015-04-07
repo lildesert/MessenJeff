@@ -8,10 +8,15 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.validation.constraints.NotNull;
 
 @Entity()
+@NamedQueries({
+@NamedQuery(name = "Connexion.findByNickname", query = "Select c From Connexion c where c.nickname = :name")
+})
 public class Connexion {
 
 	@Id

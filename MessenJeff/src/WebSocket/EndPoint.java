@@ -2,6 +2,9 @@ package WebSocket;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.websocket.EncodeException;
@@ -19,7 +22,7 @@ import org.apache.logging.log4j.Logger;
 
 import entities.Connexion;
 
-@ServerEndpoint(value = "/chat/{room}", encoders = MessageEncoder.class, decoders = MessageDecoder.class)
+@ServerEndpoint(value = "/chat/{room}/{username}", encoders = MessageEncoder.class, decoders = MessageDecoder.class)
 public class EndPoint {
 
     private final Logger log = LogManager.getLogger(getClass().getName());
@@ -28,15 +31,29 @@ public class EndPoint {
     ConnexionService connexionService;
     
     @OnOpen
-    public void open(final Session session, @PathParam("room") final String room) {
+    public void open(final Session session, @PathParam("room") final String room, @PathParam("username") final String username) {
         System.out.println("ouverture session, room : "+room);
         
         Connexion c = new Connexion();
-        c.setNickname("Ju");
-        c.setSalle(room);
-        c.addConnectionDates(new Date());
-        connexionService.create(c);
-
+        
+        Map<String, Object> param = new HashMap<>();
+		param.put("name", username);
+		List<Connexion> connexionList = connexionService.findWithNamedQuery("Connexion.findByNickname", param);
+        
+		if(connexionList.size() == 0)
+		{	
+	        c.setNickname(username);
+	        c.setSalle(room);
+	        c.addConnectionDates(new Date());
+	        connexionService.create(c);
+		}
+		else
+		{
+			c = connexionList.get(0);
+			c.addConnectionDates(new Date());
+			connexionService.update(c);
+		}
+		
         session.getUserProperties().put("room", room);
     }
 
@@ -51,7 +68,7 @@ public class EndPoint {
                 }
             }
         } catch (IOException | EncodeException e) {
-            System.out.println("gros fail : "+e);
+            System.out.println("error onMessage : "+e);
         	log.log(Level.WARN, "error onMessage", e);
         }
     }
