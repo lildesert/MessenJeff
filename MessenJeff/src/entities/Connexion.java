@@ -30,12 +30,12 @@ public class Connexion {
 	private String salle;
 	
 	@ElementCollection
-	@Temporal(javax.persistence.TemporalType.DATE)
-	private List<Date> connectionDates;
+	@Temporal(javax.persistence.TemporalType.TIMESTAMP)
+	private List<Date> connexionDates;
 	
 	public Connexion()
 	{
-		this.connectionDates = new ArrayList<Date>();
+		this.connexionDates = new ArrayList<Date>();
 	}
 	
 	public int getId() {
@@ -57,9 +57,9 @@ public class Connexion {
 		this.salle = salle;
 	}
 	public List<Date> getConnectionDates() {
-		return connectionDates;
+		return connexionDates;
 	}
 	public void addConnectionDates(Date connectionDate) {
-		this.connectionDates.add(connectionDate);
+		this.connexionDates.add(connectionDate);
 	}
 }
