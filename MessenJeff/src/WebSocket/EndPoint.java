@@ -23,27 +23,26 @@ import entities.Connexion;
 public class EndPoint {
 
     private final Logger log = LogManager.getLogger(getClass().getName());
-    
-    @Inject
-	private ConnexionService connexionService;
 
+    @Inject
+    ConnexionService connexionService;
+    
     @OnOpen
     public void open(final Session session, @PathParam("room") final String room) {
-        log.info("Ouverture de la session, room: " + room);
-        System.out.println("test");
+        System.out.println("ouverture session, room : "+room);
         
         Connexion c = new Connexion();
         c.setNickname("Ju");
         c.setSalle(room);
         c.addConnectionDates(new Date());
         connexionService.create(c);
-        
+
         session.getUserProperties().put("room", room);
     }
 
     @OnMessage
     public void onMessage(final Session session, final Message chatMessage) {
-    	log.info("reception message");
+    	System.out.println("reception message");
         String room = (String) session.getUserProperties().get("room");
         try {
             for (Session s : session.getOpenSessions()) {
@@ -52,7 +51,8 @@ public class EndPoint {
                 }
             }
         } catch (IOException | EncodeException e) {
-            log.log(Level.WARN, "error onMessage", e);
+            System.out.println("gros fail : "+e);
+        	log.log(Level.WARN, "error onMessage", e);
         }
     }
 }
