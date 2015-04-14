@@ -50,8 +50,19 @@ public class EndPoint {
 		else
 		{
 			c = connexionList.get(0);
-			c.addConnectionDates(new Date());
-			connexionService.update(c);
+			if(!c.getSalle().equals(room))
+			{
+				Connexion co = new Connexion();
+				co.setNickname(username);
+		        co.setSalle(room);
+		        co.addConnectionDates(new Date());
+		        connexionService.create(co);
+			}
+			else
+			{
+				c.addConnectionDates(new Date());
+				connexionService.update(c);
+			}
 		}
 		
         session.getUserProperties().put("room", room);
