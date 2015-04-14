@@ -10,7 +10,7 @@ var idLastSentMessage = 0;
 var idLastReceivedMessage = 0;
 var typeLastMessage = 'received';
 var users = [];
-var rooms [];
+var rooms = [];
 var websocket;
 
 $( document ).ready(function() {
@@ -18,8 +18,8 @@ $( document ).ready(function() {
     $("#username").focus();
     
     $("#enterRoom").click(function(e) {
-        if($("#image").val().trim()!=''){
-            image = $("#image").val().trim();
+        if($("#userimage").val().trim()!=''){
+            image = $("#userimage").val().trim();
         }
         room = $('#salle').val().trim();
         name =  $("#username").val().trim();
@@ -28,11 +28,14 @@ $( document ).ready(function() {
     });
     
     // Detect when the user is in the input box
-    $("#btn-input").focus(function() {
+    $("#rooms").on("focus", ".btInput", function () {
         mousePosition = 'in';
-    }).blur(function() {
-        mousePosition = 'out';
     });
+    // Detect when the user is out the input box
+    $("#rooms").on("blur", ".btInput", function () {
+    	 mousePosition = 'out';
+    });
+    
     // Press "Enter" to send a new message
     $( document ).keypress(function(e) {
         if(e.which == 13 && mousePosition == 'in') {
@@ -86,16 +89,17 @@ function createRoom(){
     newID = rooms.length + 1;
     newRoom = room;
     rooms[newID]= newRoom;
-    sHtml = '<div id="room_'+newID+'" class="row chat-window col-xs-5 col-md-3" style="margin-left:10px;">';
+    var sHtml = '<div id="room_'+newID+'" class="row chat-window col-xs-5 col-md-3" style="margin-left:10px;">';
     sHtml += ' <div class="col-xs-12 col-md-12"><div class="panel panel-default">';
-    sHtml += '<div class="panel-heading top-bar"><div class="col-md-8 col-xs-8"><h3 class="panel-title"></h3></div>'
+    sHtml += '<div class="panel-heading top-bar"><div class="col-md-8 col-xs-8"><h3 class="panel-title"></h3></div>';
     sHtml += '<div class="col-md-4 col-xs-4" style="text-align: right; color: whitesmoke;">' + newRoom;
     sHtml += '</div></div><div id="box" class="panel-body msg_container_base"></div>';
     sHtml += '<div class="profile-footer"></div><div class="panel-footer">';
-    sHtml += '<div class="input-group input-message">'
-    sHtml += '<input id="btn-input" type="text" class="form-control input-sm chat_input" placeholder="Write your message here..." />';
+    sHtml += '<div class="input-group input-message">';
+    sHtml += '<input id="btn-input" type="text" style="height:30px;" class="form-control input-sm chat_input btInput" placeholder="Write your message here..." />';
     sHtml += '</div></div></div></div></div>';
-    $('#rooms').append(sHTML);
+    $('#rooms').empty();
+    $('#rooms').append(sHtml);
     console.log('New room added');
 }
 
@@ -134,12 +138,13 @@ function doSend(message) {
     
     var now = new Date(); 
     
-    if(now - dateLastMessage <= 60000 && typeLastMessage == 'sent') {
+    //Marche pas
+    /*if(now - dateLastMessage <= 60000 && typeLastMessage == 'sent') {
         $('#sent_' + idLastSentMessage + ' .messages time').remove();
         sHtml = '<p>' + message + '</p><time datetime="' + sDate + '">' + name + ' * ' + dateLastMessage.getHours() + ':' + dateLastMessage.getMinutes() + ' </time>';
         $('#sent_' + idLastSentMessage + ' .messages').append(sHtml);
         
-    } else {
+    } else {*/
         idLastSentMessage++;
         
         sHtml = '<div id="sent_' + idLastSentMessage + '" class="row msg_container base_sent"><div class="col-md-10 col-xs-10 message-content"><div class="messages msg_sent"><p>';
@@ -149,7 +154,7 @@ function doSend(message) {
         sHtml += '"></div>';
       
         $( "#box" ).append(sHtml);
-    }
+    //}
     removeUsersAfterNewMessage();
     $("#box").scrollTop($("#box")[0].scrollHeight);
     dateLastMessage = now;

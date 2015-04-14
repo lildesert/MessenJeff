@@ -44,7 +44,6 @@
             </div>
         </section>
         <div id="rooms">
-            
         </div>
     </body>
 </html>
