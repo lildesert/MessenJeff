@@ -10,6 +10,7 @@ var idLastSentMessage = 0;
 var idLastReceivedMessage = 0;
 var typeLastMessage = 'received';
 var users = [];
+var rooms [];
 var websocket;
 
 $( document ).ready(function() {
@@ -17,8 +18,13 @@ $( document ).ready(function() {
     $("#username").focus();
     
     $("#enterRoom").click(function(e) {
+        if($("#image").val().trim()!=''){
+            image = $("#image").val().trim();
+        }
+        room = $('#salle').val().trim();
         name =  $("#username").val().trim();
         initWebSocket();
+        createRoom();
     });
     
     // Detect when the user is in the input box
@@ -46,9 +52,7 @@ $( document ).ready(function() {
 //*******************************************
 
 function initWebSocket() {
-    room = $('#salle').val().trim();
-    name = $('#username').val().trim();
-    websocket = new WebSocket(wsUri + room +'/'+name);
+    websocket = new WebSocket(wsUri + room + '/' + name);
     websocket.onopen = function(evt) { onOpen(evt); };
     websocket.onclose = function(evt) { onClose(evt); };
     websocket.onmessage = function(evt) { onMessage(evt); };
@@ -72,6 +76,33 @@ function onMessage(evt) {
 
 function onError(evt) {
     console.log(evt);
+}
+
+//*******************************************
+// ROOM
+//*******************************************
+
+function createRoom(){
+    newID = rooms.length + 1;
+    newRoom = room;
+    rooms[newID]= newRoom;
+    sHtml = '<div id="room_'+newID+'" class="row chat-window col-xs-5 col-md-3" style="margin-left:10px;">';
+    sHtml += ' <div class="col-xs-12 col-md-12"><div class="panel panel-default">';
+    sHtml += '<div class="panel-heading top-bar"><div class="col-md-8 col-xs-8"><h3 class="panel-title"></h3></div>'
+    sHtml += '<div class="col-md-4 col-xs-4" style="text-align: right; color: whitesmoke;">' + newRoom;
+    sHtml += '</div></div><div id="box" class="panel-body msg_container_base"></div>';
+    sHtml += '<div class="profile-footer"></div><div class="panel-footer">';
+    sHtml += '<div class="input-group input-message">'
+    sHtml += '<input id="btn-input" type="text" class="form-control input-sm chat_input" placeholder="Write your message here..." />';
+    sHtml += '</div></div></div></div></div>';
+    $('#rooms').append(sHTML);
+    console.log('New room added');
+}
+
+function deleteRoom(idRoom){
+    delete(rooms.idRoom);
+    $('#room_'+idRoom).remove();
+    console.log('Room deleted');
 }
 
 //*******************************************

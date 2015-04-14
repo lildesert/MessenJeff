@@ -43,69 +43,8 @@
                 </form>
             </div>
         </section>
-        <div class="">
-            <div id="room_1" class="row chat-window col-xs-5 col-md-3" style="margin-left:10px;">
-                <div class="col-xs-12 col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading top-bar">
-                            <div class="col-md-8 col-xs-8">
-                                <h3 class="panel-title"></h3>
-                            </div>
-                            <div class="col-md-4 col-xs-4" style="text-align: right; color: whitesmoke;">
-                                Salle t
-                            </div>
-                        </div>
-                        <div id="box" class="panel-body msg_container_base">
-                        </div>
-                        <div class="profile-footer">
-                            <div id="user_footer_1">
-                                <img class="img-responsive img-profile-footer" src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg">
-                                <img class="img-responsive img-load" src="./ressource/img/load.gif">
-                            </div>
-                            <div id="user_footer_2">
-                                <img class="img-responsive img-profile-footer" src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg">
-                                <img class="img-responsive img-load" src="./ressource/img/load.gif">
-                            </div>
-                        </div>
-                        <div class="panel-footer">
-                            <div class="input-group input-message">
-                                <input id="btn-input" type="text" class="form-control input-sm chat_input" placeholder="Write your message here..." />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="room_1" class="row chat-window col-xs-5 col-md-3" style="margin-left:10px;">
-                <div class="col-xs-12 col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading top-bar">
-                            <div class="col-md-8 col-xs-8">
-                                <h3 class="panel-title"></h3>
-                            </div>
-                            <div class="col-md-4 col-xs-4" style="text-align: right; color: whitesmoke;">
-                                Salle t
-                            </div>
-                        </div>
-                        <div id="box" class="panel-body msg_container_base">
-                        </div>
-                        <div class="profile-footer">
-                            <div id="user_footer_1">
-                                <img class="img-responsive img-profile-footer" src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg">
-                                <img class="img-responsive img-load" src="./ressource/img/load.gif">
-                            </div>
-                            <div id="user_footer_2">
-                                <img class="img-responsive img-profile-footer" src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg">
-                                <img class="img-responsive img-load" src="./ressource/img/load.gif">
-                            </div>
-                        </div>
-                        <div class="panel-footer">
-                            <div class="input-group input-message">
-                                <input id="btn-input" type="text" class="form-control input-sm chat_input" placeholder="Write your message here..." />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div id="rooms">
+            
         </div>
     </body>
 </html>
