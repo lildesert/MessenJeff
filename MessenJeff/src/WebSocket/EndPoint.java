@@ -28,7 +28,7 @@ public class EndPoint {
     private final Logger log = LogManager.getLogger(getClass().getName());
 
     @Inject
-    ConnexionService connexionService;
+    private ConnexionService connexionService;
     
     @OnOpen
     public void open(final Session session, @PathParam("room") final String room, @PathParam("username") final String username) {
