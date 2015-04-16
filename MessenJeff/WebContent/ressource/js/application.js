@@ -11,24 +11,30 @@ var idLastReceivedMessage = 0;
 var typeLastMessage = 'received';
 var users = [];
 var rooms = [];
-var websocket;
+var roomMouse=-1;
+var websocket = [];
 
 $( document ).ready(function() {
     
     $("#username").focus();
     
     $("#enterRoom").click(function(e) {
-        if($("#userimage").val().trim()!=''){
-            image = $("#userimage").val().trim();
-        }
-        room = $('#salle').val().trim();
+		room = $('#salle').val().trim();
         name =  $("#username").val().trim();
-        initWebSocket();
-        createRoom();
+		if(name!=''&&room!=''){
+			if($("#userimage").val().trim()!=''){
+            	image = $("#userimage").val().trim();
+        	}
+        	initWebSocket();
+			createRoom();			
+		} else {
+			alert('Name and salle are required !');
+		}      
     });
     
     // Detect when the user is in the input box
-    $("#rooms").on("focus", ".btInput", function () {
+    $("#rooms").on("focus", ".btInput", function () {		
+		roomMouse = $(this).attr('id').split('btInput-')[1];
         mousePosition = 'in';
     });
     // Detect when the user is out the input box
@@ -55,11 +61,12 @@ $( document ).ready(function() {
 //*******************************************
 
 function initWebSocket() {
-    websocket = new WebSocket(wsUri + room + '/' + name);
-    websocket.onopen = function(evt) { onOpen(evt); };
-    websocket.onclose = function(evt) { onClose(evt); };
-    websocket.onmessage = function(evt) { onMessage(evt); };
-    websocket.onerror = function(evt) { onError(evt); };
+	newID = rooms.length;
+    websocket[newID] = new WebSocket(wsUri + room + '/' + name);
+    websocket[newID].onopen = function(evt) { onOpen(evt); };
+    websocket[newID].onclose = function(evt) { onClose(evt); };
+    websocket[newID].onmessage = function(evt) { onMessage(evt); };
+    websocket[newID].onerror = function(evt) { onError(evt); };
 }
 
 function onOpen(evt) {
@@ -86,21 +93,22 @@ function onError(evt) {
 //*******************************************
 
 function createRoom(){
-    newID = rooms.length + 1;
+    newID = rooms.length;
     newRoom = room;
     rooms[newID]= newRoom;
-    var sHtml = '<div id="room_'+newID+'" class="row chat-window col-xs-5 col-md-3" style="margin-left:10px;">';
+	marginLeft = (rooms.length-1) * 300;
+    var sHtml = '<div id="room_'+newID+'" class="row chat-window col-xs-5 col-md-3" style="left:'+marginLeft+'px;">';
     sHtml += ' <div class="col-xs-12 col-md-12"><div class="panel panel-default">';
     sHtml += '<div class="panel-heading top-bar"><div class="col-md-8 col-xs-8"><h3 class="panel-title"></h3></div>';
     sHtml += '<div class="col-md-4 col-xs-4" style="text-align: right; color: whitesmoke;">' + newRoom;
     sHtml += '</div></div><div id="box" class="panel-body msg_container_base"></div>';
     sHtml += '<div class="profile-footer"></div><div class="panel-footer">';
     sHtml += '<div class="input-group input-message">';
-    sHtml += '<input id="btn-input" type="text" style="height:30px;" class="form-control input-sm chat_input btInput" placeholder="Write your message here..." />';
+    sHtml += '<input id="btInput-'+newID+'" type="text" style="height:30px;" class="form-control input-sm chat_input btInput" placeholder="Message..." />';
     sHtml += '</div></div></div></div></div>';
-    $('#rooms').empty();
+    //$('#rooms').empty();
     $('#rooms').append(sHtml);
-    console.log('New room added');
+    console.log('New room added');	
 }
 
 function deleteRoom(idRoom){
@@ -114,8 +122,8 @@ function deleteRoom(idRoom){
 //*******************************************
 
 function takeNewMessage(){
-    var newMessage = $( "#btn-input" ).val().trim();
-    $( "#btn-input" ).val(null);
+    var newMessage = $('#btInput-'+roomMouse).val().trim();
+    $('#btInput-'+roomMouse).val(null);
     if(newMessage !== '') {
         doSend(newMessage);
     }
@@ -160,7 +168,7 @@ function doSend(message) {
     dateLastMessage = now;
     typeLastMessage = 'sent';
     var msg = '{"message":"' + message + '", "sender":"'+ name +'", "received":""}';    
-    websocket.send(msg);
+    websocket[roomMouse].send(msg);
     console.log('Sent : ' + msg);
 }
 
