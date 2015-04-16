@@ -41,7 +41,7 @@ public class EndPoint {
 		List<Connexion> connexionList = connexionService.findWithNamedQuery("Connexion.findByNickname", param);
         
 		if(connexionList.size() == 0)
-		{	
+		{				
 	        c.setNickname(username);
 	        c.setSalle(room);
 	        c.addConnectionDates(new Date());
