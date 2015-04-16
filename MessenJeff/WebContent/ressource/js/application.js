@@ -67,6 +67,7 @@ function initWebSocket() {
     websocket[newID].onclose = function(evt) { onClose(evt); };
     websocket[newID].onmessage = function(evt) { onMessage(evt); };
     websocket[newID].onerror = function(evt) { onError(evt); };
+	websocket[newID].idroom = newID;
 }
 
 function onOpen(evt) {
@@ -81,7 +82,7 @@ function onMessage(evt) {
     console.log('Message!');
     console.log(evt.data);
     var input = jQuery.parseJSON( evt.data );
-    receiveMessage(input);
+    receiveMessage(input, this.idroom);
 }
 
 function onError(evt) {
@@ -101,7 +102,7 @@ function createRoom(){
     sHtml += ' <div class="col-xs-12 col-md-12"><div class="panel panel-default">';
     sHtml += '<div class="panel-heading top-bar"><div class="col-md-8 col-xs-8"><h3 class="panel-title"></h3></div>';
     sHtml += '<div class="col-md-4 col-xs-4" style="text-align: right; color: whitesmoke;">' + newRoom;
-    sHtml += '</div></div><div id="box" class="panel-body msg_container_base"></div>';
+    sHtml += '</div></div><div id="box'+newID+'" class="panel-body msg_container_base"></div>';
     sHtml += '<div class="profile-footer"></div><div class="panel-footer">';
     sHtml += '<div class="input-group input-message">';
     sHtml += '<input id="btInput-'+newID+'" type="text" style="height:30px;" class="form-control input-sm chat_input btInput" placeholder="Message..." />';
@@ -129,7 +130,7 @@ function takeNewMessage(){
     }
 }
 
-function receiveMessage(m){
+function receiveMessage(m, idroom){
     if(m.sender != name) {
         var sHtml = '<div class="row msg_container base_receive"><div class="col-md-2 col-xs-2 avatar">';
         sHtml += '<img class="img-responsive img-profile" src="' + image + '"></div>';
@@ -137,8 +138,8 @@ function receiveMessage(m){
         sHtml += m.message + '</p><time datetime="2009-11-13T20:00">' + m.sender + '* 19h12</time>';
         sHtml += '</div></div></div>';
         
-        $( "#box" ).append(sHtml);
-        $("#box").scrollTop($("#box")[0].scrollHeight);
+        $( "#box"+idroom).append(sHtml);
+        $("#box"+idroom).scrollTop($("#box"+idroom)[0].scrollHeight);
     }
 }
 
@@ -161,10 +162,10 @@ function doSend(message) {
         sHtml += '</div></div><div class="col-md-2 col-xs-2 avatar"><img class="img-responsive img-profile" src="' + image;
         sHtml += '"></div>';
       
-        $( "#box" ).append(sHtml);
+        $("#box"+roomMouse).append(sHtml);
     //}
     removeUsersAfterNewMessage();
-    $("#box").scrollTop($("#box")[0].scrollHeight);
+    $("#box"+roomMouse).scrollTop($("#box"+roomMouse)[0].scrollHeight);
     dateLastMessage = now;
     typeLastMessage = 'sent';
     var msg = '{"message":"' + message + '", "sender":"'+ name +'", "received":""}';    
