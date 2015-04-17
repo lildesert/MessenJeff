@@ -82,7 +82,8 @@ function onMessage(evt) {
     console.log('Message!');
     console.log(evt.data);
     var input = jQuery.parseJSON( evt.data );
-    receiveMessage(input, this.idroom);
+    console.log(evt.target.idroom);
+    receiveMessage(input, evt.target.idroom);
 }
 
 function onError(evt) {
